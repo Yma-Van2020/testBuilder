@@ -24,14 +24,14 @@ describe('Introduction to Mocha Tests - ', function() {
     }
     return even(10) === true;
   });
-  // In tests, we want to compare the expected behavior to the actual behavior.
-  // A test should only fail if the expected behavior doesn't match the actual.
-  it('Throws an error when expected behavior does not match actual behavior', function() {
+  // In tests, we want to compare the expect behavior to the actual behavior.
+  // A test to only fail if the expect behavior doesn't match the actual.
+  it('Throws an error when expect behavior does not match actual behavior', function() {
     var even = function(num){
       return num/2 === 0;
     }
     if(even(10) === true) {
-      throw new Error('10 should be even!');
+      throw new Error('10 to be even!');
     }
   });
 });*/
@@ -103,36 +103,36 @@ describe('MasterCard', function() {
   // Expect syntax is one way to do this, but there are others.
   // If you want to know more, check out the documentation.
   //   http://chaijs.com/api/bdd/
-  var should = chai.should();
+  var expect = chai.expect;
 
-  //adjusted to only use should
+  //adjusted to only use to
   it('has a prefix of 51 and a length of 16', function() {
-    (detectNetwork('5112345678901234')).should.equal('MasterCard');
+    expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
   });
 
   it('has a prefix of 52 and a length of 16', function() {
-    (detectNetwork('5212345678901234')).should.equal('MasterCard');
+    expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
   });
 
   it('has a prefix of 53 and a length of 16', function() {
-    (detectNetwork('5312345678901234')).should.equal('MasterCard');
+    expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
   });
 
 
-  // You can also use should instead of expect, which changes the style
+  // You can also use to instead of expect, which changes the style
   // slightly. It really doesn't matter which one you use - check out
   // http://chaijs.com/guide/styles/ for more info, but it's important
   // to be consistent (unlike in this file, where we use BOTH expect
-  // and should, but that's just for learning), so once you've gotten
-  // these tests to pass using should syntax, refactor your tests to
-  // use either expect or should, but not both.
+  // and to, but that's just for learning), so once you've gotten
+  // these tests to pass using to syntax, refactor your tests to
+  // use either expect or to, but not both.
 
   it('has a prefix of 54 and a length of 16', function() {
-    detectNetwork('5412345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5412345678901234')).to.equal('MasterCard');
   });
 
   it('has a prefix of 55 and a length of 16', function() {
-    detectNetwork('5512345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5512345678901234')).to.equal('MasterCard');
   });
 
 });
@@ -140,34 +140,34 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  var expected = chai.expect;
+  var expect = chai.expect;
 
   for ( var prefix = 644; prefix <= 649; prefix++) {
     (function(prefix) {
       it('has a prefix of ' + prefix + ' and a length of 19', function () {
-        expected(detectNetwork(prefix.toString() + '1111111111111111')).to.equal('Discover');
+        expect(detectNetwork(prefix.toString() + '1111111111111111')).to.equal('Discover');
       });
 
       it('has a prefix of ' + prefix + '  and a length of 16', function () {
-        expected(detectNetwork(prefix.toString() + '1111111111111')).to.equal('Discover');
+        expect(detectNetwork(prefix.toString() + '1111111111111')).to.equal('Discover');
       });
     })(prefix);
   }
 
   it('has a prefix of 6011 and a length of 16', function() {
-    expected(detectNetwork('6011123456781234')).to.equal('Discover');
+    expect(detectNetwork('6011123456781234')).to.equal('Discover');
   });
 
   it('has a prefix of 6011 and a length of 19', function () {
-    expected(detectNetwork('6011123456781234123')).to.equal('Discover');
+    expect(detectNetwork('6011123456781234123')).to.equal('Discover');
   });
 
   it('has a prefix of 65 and a length of 19', function () {
-    expected(detectNetwork('6511123456432222222')).to.equal('Discover');
+    expect(detectNetwork('6511123456432222222')).to.equal('Discover');
   });
 
   it('has a prefix of 65 and a length of 16', function () {
-    expected(detectNetwork('6511123456432222')).to.equal('Discover');
+    expect(detectNetwork('6511123456432222')).to.equal('Discover');
   });
 });
 
@@ -200,7 +200,7 @@ describe('Maestro', function() {
 
 describe('China UnionPay', function() {
 
-  var should = chai.should();
+  var expect = chai.expect;
 // for range 622126 to 622925
   for (var i = 11; i <= 14; i++) {
     (function(i) {
@@ -209,7 +209,7 @@ describe('China UnionPay', function() {
         (function(prefix) {
 
           it('has a prefix of ' + prefix + ' and a length of ' + (i + 5), function() {
-            detectNetwork(prefix.toString() + (new Array(i)).join(' ')).should.equal('China UnionPay');
+            expect(detectNetwork(prefix.toString() + (new Array(i)).join(' '))).to.equal('China UnionPay');
           });
         })(prefix);
       }
@@ -223,7 +223,7 @@ describe('China UnionPay', function() {
         (function(prefix) {
 
           it('has a prefix of ' + prefix + ' and a length of ' + (i + 2), function() {
-            detectNetwork(prefix.toString() + (new Array(i)).join(' ')).should.equal('China UnionPay');
+            expect(detectNetwork(prefix.toString() + (new Array(i)).join(' '))).to.equal('China UnionPay');
           });
         })(prefix);
       }
@@ -237,7 +237,7 @@ describe('China UnionPay', function() {
         (function(prefix) {
 
           it('has a prefix of ' + prefix + ' and a length of ' + (i + 3), function() {
-            detectNetwork(prefix.toString() + (new Array(i)).join(' ')).should.equal('China UnionPay');
+            expect(detectNetwork(prefix.toString() + (new Array(i)).join(' '))).to.equal('China UnionPay');
           });
         })(prefix);
       }
@@ -248,7 +248,7 @@ describe('China UnionPay', function() {
 
 
 
-describe('should support Switch', function() {
+describe('to support Switch', function() {
 
   var expect = chai.expect;
 
